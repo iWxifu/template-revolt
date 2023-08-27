@@ -2,6 +2,7 @@ import { Client} from "revkit";
 import { readdirSync } from "fs";
 import { join} from "path"
 import { Command } from "../types";
+import { logger } from "../utils";
 
 module.exports = (client : Client) => {
     const comms: Command[] = [];
@@ -16,5 +17,5 @@ module.exports = (client : Client) => {
         client.commands.set(command.name, command)
     });
 
-    console.log(`Successfully loaded ${comms.length} commands <3`);
+    logger.info(`Successfully loaded ${comms.length} command(s) <3`)
 }

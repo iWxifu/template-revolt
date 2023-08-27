@@ -1,3 +1,5 @@
+// --- Permissions Check ---
+
 import {Member, Permissions} from "revkit"
 
 export const checkPerms = (member:Member, permissions: Array<Permissions>) => {
@@ -12,3 +14,18 @@ export const checkPerms = (member:Member, permissions: Array<Permissions>) => {
         return Object.keys(Permissions).find(k => Object(Permissions)[k] === p)?.split(/(?=[A-Z])/).join(" ")
     })
 }
+
+
+// --- Logger --- 
+import * as bunyan from 'bunyan';
+
+const logger = bunyan.createLogger({
+    name: 'RVBot',
+    level: 'info',
+    streams: [{
+        stream: process.stdout,
+        level: 'info'
+    }]
+});
+
+export { logger }
